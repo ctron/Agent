@@ -158,9 +158,12 @@ public class Daemon {
     }
 
     public static void main(String[] args) throws ParseException {
-        Sentry.init("https://0c6c3531b8b5402287e2688281bbbf06@sentry.io/1378607");
 
-        Sentry.getContext().addExtra("version", getVersion());
+        String version = getVersion();
+        System.out.format("Version: %s%n", version);
+
+        Sentry.init("https://0c6c3531b8b5402287e2688281bbbf06@sentry.io/1378607");
+        Sentry.getContext().addExtra("version", version);
 
         try {
             Configuration.load();
